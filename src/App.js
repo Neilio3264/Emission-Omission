@@ -1,6 +1,7 @@
 import React from "react";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 import "./App.css";
+import logo from "./images/EO_2.png";
 
 function Map() {
   return (
@@ -20,11 +21,7 @@ function App() {
         <header>
           <div class="header-wrapper">
             <div class="logo-wrapper">
-              <img
-                class="logo"
-                alt="Emission Omission logo"
-                src="./images/EO_2.png"
-              ></img>
+              <img class="logo" alt="Emission Omission logo" src={logo}></img>
             </div>
             <div class="title-wrapper">
               <h1 class="title">Emission Omission</h1>
