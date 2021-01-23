@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans&display=swap");
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,112 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: "Work Sans";
+}
+
+.page-wrapper {
+  display: grid;
+  z-index: 1;
+  margin-left: rem(15px);
+  margin-right: rem(15px);
+  width: 100vw;
+  height: auto;
+  background: linear-gradient(
+    173.04deg,
+    rgba(78, 185, 244, 0.63) 2.93%,
+    #196fbf 94.56%
+  );
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr rem(20px);
+  grid-gap: rem(20px);
+}
+
+/* header */
+
+header {
+  display: inline-flex;
+  flex-direction: row;
+  background-color: purple;
+  margin-left: 150px;
+  margin-right: 150px;
+  align-items: center;
+  color: #ffffff;
+}
+
+.header-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.logo-wrapper {
+  background-color: lightsalmon;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+}
+
+.title-wrapper {
+  background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+
+.title-pipe {
+  margin: 0px;
+  white-space: nowrap;
+}
+
+.tagline {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 1rem;
+  margin-right: 0px;
+  /* white-space: nowrap; */
+}
+
+h2 {
+  font-weight: normal;
+}
+
+/* main card */
+
+.main-card {
+  display: flex;
+  color: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  height: 2000px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 100px;
+  background-color: #fafafa;
+  border-radius: 20px;
+}
+
+.map-wrapper {
+  /* width: 500px;
+  height: 500px; */
+  width: 60%;
+  margin-top: 100px;
+  height: 750px;
 }
