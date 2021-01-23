@@ -1,4 +1,6 @@
 import React from "react";
+
+// =============== IMPORTS FOR MAP ======================
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -12,9 +14,14 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import "./App.css";
-import logo from "./images/EO_2.png";
+// ======================================================
 
+import "./App.css";
+import Header from "./components/Header.js";
+import MainCard from "./components/MainCard.js";
+//import PageWrapper from "./components/PageWrapper.js"
+
+// ============== BASIC SETTINGS FOR MAP ================
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "60vw",
@@ -24,17 +31,10 @@ const center = {
   lat: 32.987205,
   lng: -96.748258,
 };
-// customize map style
-/*
-import mapStyles from "./mapStyles";
-const options = {
-  styles: mapStyles,
-  disableDefaultUI: true,
-  zoomControl: true,
-}
-*/
+// ======================================================
 
 export default function App() {
+  // ================= LOAD SCRIPTS FOR MAP ================
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API,
     libraries,
@@ -52,24 +52,15 @@ export default function App() {
 
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
+  // =======================================================
 
   return (
     <body>
       <div class="page-wrapper">
-        <header>
-          <div class="header-wrapper">
-            <div class="logo-wrapper">
-              <img class="logo" alt="Emission Omission logo" src={logo}></img>
-            </div>
-            <div class="title-wrapper">
-              <h1 class="title">Emission Omission</h1>
-              <h1 class="title-pipe">|</h1>
-              <h2 class="tagline">Track Your Emissions</h2>
-            </div>
-          </div>
-        </header>
-        <div class="main-card">
-          <Search panTo={panTo} />
+        <Header></Header>
+        <MainCard>
+          {/* ============ MAP, SEARCH, And GEOLOCATION ============= */}
+          <Search panTo={panTo} /> {/* Can move to where you need */}
           <div class="map-wrapper">
             <Locate panTo={panTo} />
             <GoogleMap
@@ -81,12 +72,15 @@ export default function App() {
               onLoad={onMapLoad}
             ></GoogleMap>
           </div>
-        </div>
+          {/* ======================================================= */}
+        </MainCard>
         <footer></footer>
       </div>
     </body>
   );
 }
+
+// ================== EVERYTHING BELOW IS FOR MAP =========================
 
 function Locate({ panTo }) {
   return (

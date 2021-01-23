@@ -1,0 +1,31 @@
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.text {
+  white-space: nowrap;
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 1rem;
+}
+
+.title-pipe {
+  margin: 0px;
+}
+
+.tagline {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 1rem;
+  margin-right: 0px;
+}
+
+h2 {
+  font-weight: normal;
+}
