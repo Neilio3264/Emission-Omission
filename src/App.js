@@ -14,8 +14,16 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 function App() {
   return (
-    <body>
-      <div class="map-container">
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "row",
+      }}
+    >
+      <div style={{ width: "50vw", height: "50vh" }}>
         <WrappedMap
           googleMapURL={`${process.env.REACT_APP_GOOGLE_MAP_URL}&key=${process.env.REACT_APP_GOOGLE_MAP_API}`}
           loadingElement={<div style={{ height: `100%` }} />}
@@ -23,7 +31,7 @@ function App() {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-    </body>
+    </div>
   );
 }
 

@@ -36,16 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-body {
-  width: "100vw";
-  height: "100vh";
-  display: "flex";
-  justify-content: "center";
-  flex-direction: "row";
-}
-
-.map-container {
-  width: 50vw;
-  height: 50vh;
-}
