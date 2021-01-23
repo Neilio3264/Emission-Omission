@@ -142,7 +142,21 @@ h2 {
 .map-wrapper {
   /* width: 500px;
   height: 500px; */
-  width: 60%;
+  /* width: 60%; */
   margin-top: 100px;
-  height: 750px;
+  /* height: 750px; */
+}
+
+.search {
+  position: absolute;
+  left: 60%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 10;
+}
+
+[data-reach-combobox-popover] {
+  position: absolute;
+  z-index: 10;
 }
