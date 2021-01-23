@@ -50,17 +50,29 @@ export default function MainCard() {
 
     return (
         <div class = 'main-card'>
-            <GoogleMap
-                id="map"
-                mapContainerStyle={mapContainerStyle}
-                zoom={13}
-                center={center}
-                //options={options}
-                onLoad={onMapLoad}
-            ></GoogleMap>
-            <div class = 'location-wrapper'>
-                <Search panTo={panTo} /> {/* Can move to where you need */}
-                <Locate panTo={panTo} />
+            <div class='main-wrapper'>
+                <GoogleMap
+                    id="map"
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={13}
+                    center={center}
+                    //options={options}
+                    onLoad={onMapLoad}
+                ></GoogleMap>
+                <div class = 'label-wrapper'>
+                    <h3>From:</h3>
+                </div>
+                <div class = 'location-wrapper'>
+                    <Search panTo={panTo} /> {/* Can move to where you need */}
+                    <Locate panTo={panTo} />
+                </div>
+                <div class = 'label-wrapper'>
+                    <h3>To:</h3>
+                </div>
+                <div class = 'location-wrapper'>
+                    <Search panTo={panTo} /> {/* Can move to where you need */}
+                    <Locate panTo={panTo} />
+                </div>
             </div>
         </div>
     )
