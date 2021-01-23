@@ -59,14 +59,14 @@ body {
 }
 
 /* Needed CSS for Search Bar (Can mess with) */
-.search {
+/* .search {
   position: absolute;
   left: 60%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 400px;
   z-index: 10;
-}
+} */
 
 [data-reach-combobox-popover] {
   position: absolute;
