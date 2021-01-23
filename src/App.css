@@ -68,74 +68,18 @@ body {
 
 /* header */
 
-header {
-  display: inline-flex;
-  flex-direction: row;
-  background-color: purple;
-  margin-left: 150px;
-  margin-right: 150px;
-  align-items: center;
-  color: #ffffff;
-}
-
 .header-wrapper {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
 }
 
-.logo-wrapper {
-  background-color: lightsalmon;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 150px;
-  width: 150px;
-}
-
-.title-wrapper {
-  background-color: lightgrey;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
-
-.title {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 1rem;
-  white-space: nowrap;
-}
-
-.title-pipe {
-  margin: 0px;
-  white-space: nowrap;
-}
-
-.tagline {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 1rem;
-  margin-right: 0px;
-  /* white-space: nowrap; */
-}
-
-h2 {
-  font-weight: normal;
-}
-
 /* main card */
 
 .main-card {
-  display: flex;
-  color: #ffffff;
-  flex-direction: column;
-  align-items: center;
   height: 2000px;
   margin-left: 150px;
   margin-right: 150px;
   margin-bottom: 100px;
-  background-color: #fafafa;
   border-radius: 20px;
 }
 
@@ -145,4 +89,8 @@ h2 {
   width: 60%;
   margin-top: 100px;
   height: 750px;
+}
+
+.logo-wrapper {
+  margin-right: 2rem;
 }

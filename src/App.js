@@ -1,7 +1,9 @@
 import React from "react";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 import "./App.css";
-import logo from "./images/EO_2.png";
+import Header from "./components/Header.js"
+import MainCard from "./components/MainCard.js"
+//import PageWrapper from "./components/PageWrapper.js"
 
 function Map() {
   return (
@@ -18,28 +20,17 @@ function App() {
   return (
     <body>
       <div class="page-wrapper">
-        <header>
-          <div class="header-wrapper">
-            <div class="logo-wrapper">
-              <img class="logo" alt="Emission Omission logo" src={logo}></img>
-            </div>
-            <div class="title-wrapper">
-              <h1 class="title">Emission Omission</h1>
-              <h1 class="title-pipe">|</h1>
-              <h2 class="tagline">Track Your Emissions</h2>
-            </div>
-          </div>
-        </header>
-        <div class="main-card">
-          <div class="map-wrapper">
+        <Header></Header>
+        <MainCard>
+            <div class="map-wrapper">
             <WrappedMap
               googleMapURL={`${process.env.REACT_APP_GOOGLE_MAP_URL}&key=${process.env.REACT_APP_GOOGLE_MAP_API}`}
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `100%` }} />}
               mapElement={<div style={{ height: `100%` }} />}
             />
-          </div>
-        </div>
+          </div>  
+        </MainCard>
         <footer></footer>
       </div>
     </body>
