@@ -50,16 +50,18 @@ export default function MainCard() {
 
     return (
         <div class = 'main-card'>
-            <Search panTo={panTo} /> {/* Can move to where you need */}
-            <Locate panTo={panTo} />
             <GoogleMap
-              id="map"
-              mapContainerStyle={mapContainerStyle}
-              zoom={13}
-              center={center}
-              //options={options}
-              onLoad={onMapLoad}
+                id="map"
+                mapContainerStyle={mapContainerStyle}
+                zoom={13}
+                center={center}
+                //options={options}
+                onLoad={onMapLoad}
             ></GoogleMap>
+            <div class = 'location-wrapper'>
+                <Search panTo={panTo} /> {/* Can move to where you need */}
+                <Locate panTo={panTo} />
+            </div>
         </div>
     )
 }
@@ -81,7 +83,7 @@ function Locate({ panTo }) {
         );
         }}
     >
-        <img src="/compass.svg" alt="compass" />
+        <img src="/compass.svg" alt="current location" />
     </button>
     );
 }

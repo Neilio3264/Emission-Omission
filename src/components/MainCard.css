@@ -4,3 +4,41 @@
   align-items: center;
   background-color: #fafafa;
 }
+
+[data-reach-combobox-input] {
+  border-style: solid;
+  border-color: #d7d7db;
+  background-color: #ededf0;
+  width: 100%;
+  height: 2em;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.locate {
+  display: flex;
+  border-style: solid;
+  border-color: #a4000f;
+  background-color: #d70022;
+  color: #ffffff;
+  height: 2em;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#map {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.location-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  gap: 2rem;
+  width: 68%;
+}
