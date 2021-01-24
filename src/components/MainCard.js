@@ -19,9 +19,13 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import DropdownContainer from "./DropdownContainer.js";
+import DropdownContainer, {
+  selectedCarDrop,
+  selectedFuelDrop,
+} from "./DropdownContainer.js";
 import Output from "./Output.js";
 import "./MainCard.css";
+import mapStyles from "./../mapStyles";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -32,6 +36,13 @@ const center = {
   lat: 32.987205,
   lng: -96.748258,
 };
+
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+};
+
 let gState = {
   origin: "",
   destination: "",
@@ -42,7 +53,15 @@ let gState = {
   dist: 0,
   duration: 0,
   distance: 0,
+  car: 0,
+  fuel: 0,
+  calc: 0,
 };
+
+let cars = ["Sedan", "SUV", "Truck", "Minivan"];
+let fuel = ["Gasoline", "Diesel"];
+let gas = [0.859717629, 0.955522986, 1.108811557, 1.121921764];
+let diesel = [0.700846699, 0.776283988, 0.89698365, 0.907306648];
 
 export default function MainCard() {
   const { isLoaded, loadError } = useLoadScript({
@@ -53,42 +72,7 @@ export default function MainCard() {
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
-  const cars = ["sedan", "truck", "hybrid", "luxury"];
-
-  const fuel = ["gasoline", "diesel", "E85"];
-
-  return (
-    <div class="main-card">
-      <div class="main-wrapper">
-        <Directions />
-        <div class="label-wrapper">
-          <h3>From:</h3>
-        </div>
-        <div class="location-wrapper">
-          <Search /> {/* Can move to where you need */}
-        </div>
-        <div class="label-wrapper">
-          <h3>To:</h3>
-        </div>
-        <div class="location-wrapper">
-          <Search /> {/* Can move to where you need */}
-        </div>
-        <div class="drop-wrapper">
-          <DropdownContainer
-            dropDownHeader="Car:"
-            options={cars}
-            class="carDrop"
-          ></DropdownContainer>
-          <DropdownContainer
-            dropDownHeader="Fuel:"
-            options={fuel}
-            class="fuelDrop"
-          ></DropdownContainer>
-          <Output text="Example lbs" class="output"></Output>
-        </div>
-      </div>
-    </div>
-  );
+  return <Directions />;
 }
 
 function Search({ state }) {
@@ -151,7 +135,6 @@ function Search({ state }) {
     </div>
   );
 }
-
 class Directions extends React.Component {
   constructor(props) {
     super(props);
@@ -229,6 +212,30 @@ class Directions extends React.Component {
         calculate: true,
       }));
     }
+
+    if (selectedFuelDrop === "Gasoline") {
+      gState.fuel = 1;
+    } else {
+      gState.fuel = 2;
+    }
+
+    if (selectedCarDrop === "Sedan") {
+      gState.car = 1;
+    } else if (selectedCarDrop === "SUV") {
+      gState.car = 2;
+    } else if (selectedCarDrop === "Truck") {
+      gState.car = 3;
+    } else if (selectedCarDrop === "Minivan") {
+      gState.car = 4;
+    }
+
+    if (gState.fuel > 0 && gState.car > 0) {
+      if (gState.fuel === 1) {
+        gState.calc = gas[gState.car - 1];
+      } else {
+        gState.calc = diesel[gState.car - 1];
+      }
+    }
   }
 
   onMapClick(...args) {
@@ -237,42 +244,16 @@ class Directions extends React.Component {
 
   render() {
     return (
-      <div className="map">
-        <div className="map-settings">
-          <div className="row">
-            <div className="col-md-6 col-lg-4">
-              <div className="form-group">
-                <label htmlFor="ORIGIN">Origin</label>
-                <br />
-                <Search state={"Origin"} />
-              </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4">
-              <div className="form-group">
-                <label htmlFor="DESTINATION">Destination</label>
-                <br />
-                <Search state={"Dest"} />
-              </div>
-            </div>
-          </div>
-
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={this.onClick}
-          >
-            Build Route
-          </button>
-        </div>
-
-        <div className="map-container">
+      <div class="main-card">
+        <div class="main-wrapper">
           <GoogleMap
+            id="map"
             mapContainerStyle={mapContainerStyle}
             zoom={13}
             center={center}
+            options={options}
             /*
-            //options={options}
+            //
             onLoad={onMapLoad}
             // required
             id="direction-example"
@@ -298,6 +279,7 @@ class Directions extends React.Component {
               console.log("DirectionsRenderer onUnmount map: ", map);
             }}
           >
+            {/* ================== Directions Service ===================== */}
             {this.state.destination !== "" && this.state.origin !== "" && (
               <DirectionsService
                 // required
@@ -324,7 +306,7 @@ class Directions extends React.Component {
                 }}
               />
             )}
-
+            {/* =================== Directions Renderer ==================== */}
             {this.state.response !== null && (
               <DirectionsRenderer
                 // required
@@ -347,7 +329,7 @@ class Directions extends React.Component {
                 }}
               />
             )}
-
+            {/* ===================== Distance Matrix Service ============== */}
             {this.state.calculate !== false && (
               <DistanceMatrixService
                 // required
@@ -361,6 +343,39 @@ class Directions extends React.Component {
               />
             )}
           </GoogleMap>
+          <div class="label-wrapper">
+            <h3>From:</h3>
+          </div>
+          <div class="location-wrapper">
+            <Search state={"Origin"} />
+          </div>
+          <div class="label-wrapper">
+            <h3>To:</h3>
+          </div>
+          <div class="location-wrapper">
+            <Search state={"Dest"} />
+          </div>
+          <div class="drop-wrapper">
+            <DropdownContainer
+              dropDownHeader="Car:"
+              options={cars}
+            ></DropdownContainer>
+            <DropdownContainer
+              dropDownHeader="Fuel:"
+              options={fuel}
+            ></DropdownContainer>
+            <Output
+              class="output"
+              miles={Math.round(gState.calc * gState.distance * 100) / 100}
+            ></Output>
+          </div>
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={this.onClick}
+          >
+            Calculate
+          </button>
         </div>
       </div>
     );

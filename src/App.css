@@ -41,10 +41,10 @@ body {
 /* main card */
 
 .main-card {
-  height: 2000px;
+  height: auto;
   margin-left: 150px;
   margin-right: 150px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
   border-radius: 20px;
 }
 

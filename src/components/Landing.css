@@ -52,3 +52,9 @@
   );
   opacity: 0.4;
 }
+
+.data-from {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0.5rem;
+}
