@@ -13,10 +13,10 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-// ======================================================
+import DropdownContainer from './DropdownContainer.js'
+import Output from './Output.js'
 import './MainCard.css'
-// import Locate from "./GoogleMaps/Locate.js";
-// import Search from "./GoogleMaps/Search.js";
+
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -48,6 +48,19 @@ export default function MainCard() {
       if (loadError) return "Error";
       if (!isLoaded) return "Loading...";
 
+      const cars = [
+          'sedan',
+          'truck',
+          'hybrid',
+          'luxury',
+      ]
+
+      const fuel = [
+        'gasoline',
+        'diesel',
+        'E85',
+    ]
+
     return (
         <div class = 'main-card'>
             <div class='main-wrapper'>
@@ -72,6 +85,11 @@ export default function MainCard() {
                 <div class = 'location-wrapper'>
                     <Search panTo={panTo} /> {/* Can move to where you need */}
                     <Locate panTo={panTo} />
+                </div>
+                <div class='drop-wrapper'>
+                    <DropdownContainer dropDownHeader = 'Car:' options = {cars} class="carDrop"></DropdownContainer>
+                    <DropdownContainer dropDownHeader = 'Fuel:' options = {fuel} class="fuelDrop"></DropdownContainer>
+                    <Output text = 'Example lbs' class="output"></Output>
                 </div>
             </div>
         </div>
@@ -138,7 +156,7 @@ function Search({ panTo }) {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            placeholder="Search your location"
+            placeholder="Enter a location"
         />
         <ComboboxPopover>
             <ComboboxList>

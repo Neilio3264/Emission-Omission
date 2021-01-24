@@ -56,8 +56,3 @@ body {
   position: absolute;
   z-index: 10;
 }
-
-#map {
-  max-width: 100%;
-  min-width: 100%;
-}
