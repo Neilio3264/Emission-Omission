@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.landing-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../images/road.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+  height: 100vh;
+  font-family: "Roboto";
+  color: white;
+}
+
+.landing-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 60%;
+  text-align: center;
+}
+
+.landing-title {
+  z-index: 1;
+  text-align: center;
+  font-size: 6rem;
+  margin: 0px;
+}
+
+.landing-tagline {
+  z-index: 1;
+}
+
+.gradient {
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 0, 24, 1) 41%,
+    rgba(102, 102, 102, 1) 100%
+  );
+  opacity: 0.4;
+}

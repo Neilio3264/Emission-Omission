@@ -19,7 +19,8 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-// ======================================================
+import DropdownContainer from "./DropdownContainer.js";
+import Output from "./Output.js";
 import "./MainCard.css";
 
 const libraries = ["places"];
@@ -52,17 +53,40 @@ export default function MainCard() {
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
+  const cars = ["sedan", "truck", "hybrid", "luxury"];
+
+  const fuel = ["gasoline", "diesel", "E85"];
+
   return (
     <div class="main-card">
-      <Directions />
-      {/* <GoogleMap
-        id="map"
-        mapContainerStyle={mapContainerStyle}
-        zoom={13}
-        center={center}
-        //options={options}
-        onLoad={onMapLoad}
-      ></GoogleMap> */}
+      <div class="main-wrapper">
+        <Directions />
+        <div class="label-wrapper">
+          <h3>From:</h3>
+        </div>
+        <div class="location-wrapper">
+          <Search /> {/* Can move to where you need */}
+        </div>
+        <div class="label-wrapper">
+          <h3>To:</h3>
+        </div>
+        <div class="location-wrapper">
+          <Search /> {/* Can move to where you need */}
+        </div>
+        <div class="drop-wrapper">
+          <DropdownContainer
+            dropDownHeader="Car:"
+            options={cars}
+            class="carDrop"
+          ></DropdownContainer>
+          <DropdownContainer
+            dropDownHeader="Fuel:"
+            options={fuel}
+            class="fuelDrop"
+          ></DropdownContainer>
+          <Output text="Example lbs" class="output"></Output>
+        </div>
+      </div>
     </div>
   );
 }
@@ -113,7 +137,7 @@ function Search({ state }) {
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Search your location"
+          placeholder="Enter a location"
         />
         <ComboboxPopover>
           <ComboboxList>

@@ -1,0 +1,23 @@
+.drop-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0px;
+}
+
+select {
+  height: 3rem;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-color: #d7d7db;
+  border-radius: 0.25rem;
+  background-color: #ededf0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+
+  width: 100%;
+  cursor: pointer;
+}
