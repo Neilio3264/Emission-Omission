@@ -1,0 +1,15 @@
+Link {
+  background-color: lightblue;
+}
+
+.scroll-button-container {
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

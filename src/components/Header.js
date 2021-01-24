@@ -4,7 +4,7 @@ import Title from "./Title.js"
 
 function Header() {
     return(
-        <div style={{
+        <div id="section1" style={{
             display: "inline-flex",
             flexDirection: "row",
             alignItems: "center",
